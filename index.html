@@ -214,6 +214,12 @@
       touch-action: none;
     }
 
+    body.menu-open .site-header {
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      background: #0f141c !important;
+    }
+
     @media (max-width: 768px) {
       body {
         padding-top: var(--header-height-mobile);
@@ -458,7 +464,7 @@
         padding: 24px 20px 30px;
         box-shadow: -10px 0 35px rgba(0, 0, 0, 0.8);
         border-left: 1px solid var(--border-subtle);
-        transform: translateX(100%);
+        transform: translate3d(100%, 0, 0);
         visibility: hidden;
         pointer-events: none;
         transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s;
@@ -466,10 +472,12 @@
         gap: 20px;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
       }
 
       .main-nav.active {
-        transform: translateX(0);
+        transform: translate3d(0, 0, 0);
         visibility: visible;
         pointer-events: auto;
       }
@@ -533,10 +541,8 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.72);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      z-index: 1001;
+      background: rgba(0, 0, 0, 0.75);
+      z-index: 999;
       opacity: 0;
       transition: opacity 0.3s ease;
       touch-action: none;
